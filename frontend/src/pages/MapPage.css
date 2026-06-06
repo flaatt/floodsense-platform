@@ -1,0 +1,2 @@
+.map-page { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+.map-main { flex: 1; margin-top: 56px; position: relative; overflow: hidden; }

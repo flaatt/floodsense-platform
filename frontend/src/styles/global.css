@@ -1,0 +1,182 @@
+/* ═══════════════════════════════════════════════════════════
+   FloodSense Kinshasa — Global CSS
+   Aesthetic: Industrial command-center. Dark, data-dense,
+   with electric cyan & danger-orange accents. Built for
+   night shifts and emergency rooms.
+═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Core palette ─────────────────────────────────────── */
+  --bg-void:      #050f1a;   /* deepest background           */
+  --bg-deep:      #091624;   /* cards, panels                */
+  --bg-surface:   #0d1f33;   /* elevated surfaces            */
+  --bg-raised:    #132840;   /* hover states, inputs         */
+  --bg-overlay:   rgba(5, 15, 26, 0.92);
+
+  --border:       rgba(0, 200, 255, 0.12);
+  --border-bright: rgba(0, 200, 255, 0.35);
+
+  /* ── Brand colors ─────────────────────────────────────── */
+  --cyan:         #00c8ff;
+  --cyan-dim:     rgba(0, 200, 255, 0.15);
+  --cyan-glow:    rgba(0, 200, 255, 0.4);
+
+  /* ── Risk levels ──────────────────────────────────────── */
+  --risk-0:       #4a5568;
+  --risk-1:       #38a169;   /* vert  */
+  --risk-2:       #d69e2e;   /* jaune */
+  --risk-3:       #e07c3a;   /* orange */
+  --risk-4:       #e53e3e;   /* rouge critique */
+  --risk-4-glow:  rgba(229, 62, 62, 0.4);
+
+  /* ── Text ─────────────────────────────────────────────── */
+  --text-primary:   #e8f4fd;
+  --text-secondary: #7fa8c9;
+  --text-dim:       #3d6080;
+  --text-data:      #00c8ff;
+
+  /* ── Typography ───────────────────────────────────────── */
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+
+  /* ── Spacing ─────────────────────────────────────────── */
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 14px;
+  --r-xl: 20px;
+
+  /* ── Transitions ──────────────────────────────────────── */
+  --t-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --t-med:  250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --t-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Reset ────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg-void);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
+
+/* ── Leaflet overrides ────────────────────────────────────── */
+.leaflet-container {
+  background: #05111f !important;
+  font-family: var(--font-body) !important;
+}
+
+.leaflet-control-zoom a {
+  background: var(--bg-surface) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border) !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: var(--bg-raised) !important;
+  color: var(--cyan) !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-bright) !important;
+  border-radius: var(--r-lg) !important;
+  color: var(--text-primary) !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6) !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--bg-surface) !important;
+}
+
+.leaflet-popup-close-button {
+  color: var(--text-secondary) !important;
+}
+
+/* ── Animations ───────────────────────────────────────────── */
+@keyframes pulse-ring {
+  0%   { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes blink-critical {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+@keyframes scan-line {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.animate-fade-in-up  { animation: fade-in-up  var(--t-slow) both; }
+.animate-fade-in     { animation: fade-in      var(--t-slow) both; }
+.animate-slide-right { animation: slide-in-right var(--t-slow) both; }
+.animate-slide-left  { animation: slide-in-left  var(--t-slow) both; }
+
+/* ── Utility classes ──────────────────────────────────────── */
+.font-display { font-family: var(--font-display); }
+.font-mono    { font-family: var(--font-mono); }
+
+.text-cyan    { color: var(--cyan); }
+.text-dim     { color: var(--text-dim); }
+.text-secondary { color: var(--text-secondary); }
+
+.risk-color-1 { color: var(--risk-1); }
+.risk-color-2 { color: var(--risk-2); }
+.risk-color-3 { color: var(--risk-3); }
+.risk-color-4 { color: var(--risk-4); }
+
+.bg-surface { background: var(--bg-surface); }
+.bg-deep    { background: var(--bg-deep); }
+
+.border-subtle { border: 1px solid var(--border); }
+.border-bright { border: 1px solid var(--border-bright); }
+
+/* Noise texture overlay for depth */
+.noise-texture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
+}

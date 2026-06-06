@@ -1,0 +1,10 @@
+.risk-chart {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 18px;
+}
+.rc-title { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 14px; }
+.rc-tooltip { background: var(--bg-panel); border: 1px solid var(--border-default); padding: 8px 12px; border-radius: 4px; }
+.rct-label { font-size: 10px; color: var(--text-muted); margin-bottom: 4px; font-family: var(--font-mono); }
+.rct-value { font-size: 12px; font-family: var(--font-mono); font-weight: 500; }

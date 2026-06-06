@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgis/postgis:15-3.4
+    container_name: floodsense_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: floodsense
+      POSTGRES_USER: flooduser
+      POSTGRES_PASSWORD: Kinshasa2026
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "55432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U flooduser -d floodsense"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: floodsense_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: floodsense_backend
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      DATABASE_URL: postgresql://flooduser:Kinshasa2026@db:5432/floodsense
+      REDIS_URL: redis://redis:6379
+      PORT: 3001
+      NODE_ENV: development
+      FRONTEND_URL: http://localhost:3000
+      JWT_SECRET: change_moi_avec_une_chaine_aleatoire_de_64_chars
+      AI_SERVICE_URL: http://host.docker.internal:8000
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./logs:/app/logs
+
+volumes:
+  pgdata:
+    driver: local

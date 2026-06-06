@@ -1,0 +1,159 @@
+/* ════════════════════════════════════════════════════════
+   FloodSense Kinshasa — Global Styles
+   Aesthetic: Dark industrial / mission-critical / raw data
+   Fonts: Barlow Condensed (display) + DM Mono (data)
+════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,900;1,700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Barlow:wght@300;400;500;600&display=swap');
+
+/* ── CSS Variables ──────────────────────────────────── */
+:root {
+  /* Core palette */
+  --ink:         #0A0E14;
+  --ink-2:       #111820;
+  --ink-3:       #1A2332;
+  --ink-4:       #243040;
+  --steel:       #2E3D50;
+  --mist:        #8FA3BA;
+  --cloud:       #C4D1DE;
+  --white:       #EEF2F7;
+
+  /* Risk colors */
+  --safe:        #1DB954;
+  --safe-dim:    #0E6B30;
+  --watch:       #F5C542;
+  --watch-dim:   #7D620E;
+  --warn:        #F07B1D;
+  --warn-dim:    #7A3A06;
+  --critical:    #E8314A;
+  --critical-dim:#7A0F1E;
+
+  /* Accent */
+  --accent:      #00C8FF;
+  --accent-dim:  #006B87;
+
+  /* Typography */
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body:    'Barlow', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+
+  /* Spacing */
+  --gap-xs: 4px;
+  --gap-sm: 8px;
+  --gap-md: 16px;
+  --gap-lg: 24px;
+  --gap-xl: 40px;
+
+  /* Borders */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --border: 1px solid var(--steel);
+  --border-accent: 1px solid var(--accent);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 24px rgba(0,0,0,0.6);
+  --shadow-lg: 0 8px 48px rgba(0,0,0,0.8);
+  --glow-accent: 0 0 20px rgba(0,200,255,0.2);
+  --glow-critical: 0 0 20px rgba(232,49,74,0.3);
+}
+
+/* ── Reset ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--ink);
+  color: var(--cloud);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* ── Typography ─────────────────────────────────────── */
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  color: var(--white);
+}
+
+.mono { font-family: var(--font-mono); }
+.muted { color: var(--mist); }
+.accent { color: var(--accent); }
+
+/* ── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--ink-2); }
+::-webkit-scrollbar-thumb { background: var(--steel); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--mist); }
+
+/* ── Leaflet overrides ─────────────────────────────── */
+.leaflet-container { background: var(--ink) !important; }
+.leaflet-tile { filter: brightness(0.7) saturate(0.6) hue-rotate(200deg); }
+.leaflet-control-attribution { display: none !important; }
+.leaflet-control-zoom a {
+  background: var(--ink-3) !important;
+  color: var(--cloud) !important;
+  border-color: var(--steel) !important;
+}
+.leaflet-popup-content-wrapper {
+  background: var(--ink-3) !important;
+  color: var(--cloud) !important;
+  border: var(--border) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+.leaflet-popup-tip { background: var(--ink-3) !important; }
+
+/* ── Animations ─────────────────────────────────────── */
+@keyframes pulse-critical {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(232,49,74,0.4); }
+  50%       { opacity: 0.85; box-shadow: 0 0 0 8px rgba(232,49,74,0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scanline {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes ripple {
+  0%   { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+.animate-fade-in  { animation: fadeIn 0.4s ease forwards; }
+.animate-slide    { animation: slideRight 0.3s ease forwards; }
+.pulse-critical   { animation: pulse-critical 2s infinite; }
+
+/* ── Utility classes ─────────────────────────────────── */
+.flex   { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: var(--gap-sm); }
+.gap-md { gap: var(--gap-md); }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.full-height { height: 100vh; }

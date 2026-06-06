@@ -1,0 +1,51 @@
+/* KPI Row */
+.kpi-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 20px; }
+@media (max-width: 1200px) { .kpi-row { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px)  { .kpi-row { grid-template-columns: repeat(2, 1fr); } }
+
+/* Risk Table */
+.risk-table-wrap {
+  background: var(--bg-surface);
+  border: 1px solid var(--border); border-radius: var(--r-lg);
+  overflow: hidden;
+}
+.rt-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; border-bottom: 1px solid var(--border); }
+.rt-title  { font-size: 15px; font-weight: 800; }
+.rt-count  { font-size: 11px; color: var(--text-dim); }
+.rt-scroll { overflow-x: auto; max-height: 400px; overflow-y: auto; }
+
+.risk-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.rt-th      {
+  position: sticky; top: 0;
+  background: var(--bg-deep); color: var(--text-dim);
+  font-size: 9px; font-family: var(--font-mono); font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 8px 12px; text-align: left; white-space: nowrap;
+  border-bottom: 1px solid var(--border); cursor: pointer; user-select: none;
+  transition: color var(--t-fast);
+}
+.rt-th:hover, .rt-th.active { color: var(--cyan); }
+
+.rt-row { border-bottom: 1px solid rgba(0,200,255,0.05); transition: background var(--t-fast); }
+.rt-row:hover    { background: var(--bg-raised); }
+.rt-row:last-child { border-bottom: none; }
+.row-critical    { background: rgba(229,62,62,0.04); }
+.row-critical:hover { background: rgba(229,62,62,0.08); }
+
+.risk-table td   { padding: 9px 12px; vertical-align: middle; }
+.rt-commune      { display: flex; flex-direction: column; gap: 1px; }
+.rt-commune .font-display { font-weight: 700; font-size: 13px; }
+.rt-quartier     { font-size: 10px; color: var(--text-dim); }
+.rt-score        { min-width: 120px; }
+.rt-rain         { color: var(--text-secondary); }
+.rt-time         { color: var(--text-dim); font-size: 10px; font-family: var(--font-mono); white-space: nowrap; }
+
+/* Chart Card */
+.chart-card {
+  background: var(--bg-surface); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 16px;
+}
+.chart-card-header { margin-bottom: 14px; }
+.chart-title       { font-size: 14px; font-weight: 800; margin-bottom: 2px; }
+.chart-subtitle    { font-size: 10px; color: var(--text-dim); }
+.chart-loading     { height: 180px; display: flex; align-items: center; justify-content: center; }

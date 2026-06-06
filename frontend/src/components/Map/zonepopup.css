@@ -1,0 +1,100 @@
+.zone-popup {
+  position: absolute; top: 60px; right: 16px; bottom: 16px;
+  width: 320px; z-index: 600;
+  background: var(--bg-deep);
+  border: 1px solid var(--border-bright);
+  border-radius: var(--r-xl);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  box-shadow: -8px 0 40px rgba(0,0,0,0.5);
+}
+
+/* Header */
+.zp-header {
+  padding: 16px; border-bottom: 1px solid; flex-shrink: 0;
+  position: relative;
+}
+.zp-commune   { font-family: var(--font-display); font-size: 20px; font-weight: 800; line-height: 1.1; }
+.zp-quartier  { font-size: 11px; color: var(--text-secondary); margin: 2px 0 8px; }
+.zp-badges    { display: flex; gap: 6px; flex-wrap: wrap; }
+.zp-close     {
+  position: absolute; top: 12px; right: 12px;
+  background: var(--bg-raised); border: 1px solid var(--border);
+  color: var(--text-secondary); width: 28px; height: 28px;
+  border-radius: 50%; cursor: pointer; font-size: 13px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all var(--t-fast);
+}
+.zp-close:hover { color: var(--text-primary); border-color: var(--border-bright); }
+
+/* Sections */
+.zp-section { padding: 14px 16px; border-bottom: 1px solid var(--border); overflow-y: auto; }
+.zp-section-title {
+  font-size: 9px; font-weight: 600; color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;
+  font-family: var(--font-mono);
+}
+
+/* Recommendation */
+.zp-recommendation {
+  margin-top: 8px; font-size: 11px; padding: 7px 10px;
+  border-left: 2px solid; border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  background: rgba(0,0,0,0.2); line-height: 1.5;
+}
+
+/* Weather grid */
+.zp-weather-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.zp-weather-item {
+  background: var(--bg-surface); border-radius: var(--r-md);
+  padding: 8px; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  border: 1px solid var(--border);
+}
+.zwi-icon  { font-size: 16px; }
+.zwi-val   { font-size: 14px; font-weight: 600; color: var(--cyan); }
+.zwi-label { font-size: 9px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* Chart */
+.zp-chart { background: var(--bg-surface); border-radius: var(--r-md); padding: 8px; }
+
+/* Terrain */
+.zp-terrain-grid { display: flex; flex-direction: column; gap: 5px; }
+.zp-terrain-row  {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px;
+}
+.zp-terrain-row span:first-child { color: var(--text-secondary); }
+.zp-terrain-row span:last-child  { color: var(--text-primary); font-size: 11px; }
+
+/* Events */
+.zp-events   { display: flex; flex-direction: column; gap: 4px; }
+.zp-event-row {
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  font-size: 11px;
+}
+.ev-date   { color: var(--text-dim); font-size: 10px; }
+.ev-sev    { font-size: 10px; padding: 1px 5px; border-radius: 3px; font-weight: 600; }
+.ev-sev-catastrophic { background: rgba(229,62,62,0.15); color: var(--risk-4); }
+.ev-sev-severe       { background: rgba(224,124,58,0.15); color: var(--risk-3); }
+.ev-sev-moderate     { background: rgba(214,158,46,0.15); color: var(--risk-2); }
+.ev-sev-minor        { background: rgba(56,161,105,0.15); color: var(--risk-1); }
+.ev-deaths    { font-size: 10px; color: var(--risk-4); }
+.ev-displaced { font-size: 10px; color: var(--text-secondary); }
+
+/* Footer */
+.zp-footer {
+  padding: 10px 16px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-shrink: 0;
+  font-size: 10px; color: var(--text-dim);
+  font-family: var(--font-mono);
+  border-top: 1px solid var(--border);
+  background: var(--bg-void);
+}
+.zp-events-count { color: var(--risk-4); font-size: 10px; }
+
+/* Scrollable body */
+.zone-popup > .zp-section { overflow-y: auto; }
+
+@media (max-width: 600px) {
+  .zone-popup { left: 8px; right: 8px; width: auto; top: auto; bottom: 0; border-radius: var(--r-xl) var(--r-xl) 0 0; max-height: 65vh; }
+}

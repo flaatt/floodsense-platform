@@ -1,0 +1,19 @@
+.stat-card-d {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--card-color);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  display: flex; flex-direction: column; gap: 6px;
+  transition: all var(--transition-base);
+}
+.stat-card-d:hover { border-color: var(--card-color); transform: translateY(-1px); box-shadow: var(--shadow-card); }
+.stat-pulse { animation: danger-pulse 2s ease infinite; }
+.scd-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.scd-icon { font-size: 20px; }
+.scd-trend { font-family: var(--font-mono); font-size: 11px; padding: 2px 6px; border-radius: 10px; }
+.scd-trend.up   { color: var(--success); background: rgba(39,174,96,0.12); }
+.scd-trend.down { color: var(--danger);  background: rgba(231,76,60,0.12); }
+.scd-value { font-family: var(--font-display); font-size: 32px; font-weight: 800; color: var(--text-primary); line-height: 1; }
+.scd-label { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+.scd-sub   { font-size: 11px; color: var(--text-muted); font-style: italic; margin-top: 2px; }

@@ -1,0 +1,38 @@
+.dash-page { display: flex; flex-direction: column; height: 100vh; overflow: hidden; background: var(--bg-void); }
+.dash-loading { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; color: var(--text-muted); }
+.dash-layout { display: flex; flex: 1; margin-top: 56px; overflow: hidden; }
+
+/* Sidebar */
+.dash-sidebar {
+  width: 320px; flex-shrink: 0;
+  background: var(--bg-deep);
+  border-right: 1px solid var(--border-subtle);
+  overflow-y: auto;
+  display: flex; flex-direction: column; gap: 0;
+}
+.sidebar-section { padding: 20px; border-bottom: 1px solid var(--border-subtle); }
+.sidebar-title { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); letter-spacing: 2px; margin-bottom: 14px; }
+
+/* Main */
+.dash-main { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+
+/* KPI row */
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+
+/* Charts row */
+.charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* Events */
+.events-section { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px; }
+.section-title { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); letter-spacing: 2px; margin-bottom: 12px; }
+.events-list { display: flex; flex-direction: column; gap: 6px; }
+.event-row { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--border-subtle); }
+.event-row:last-child { border-bottom: none; }
+.er-date    { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); min-width: 80px; }
+.er-commune { flex: 1; font-size: 13px; color: var(--text-secondary); font-weight: 600; }
+.er-severity { font-family: var(--font-mono); font-size: 10px; padding: 2px 6px; border-radius: 8px; }
+.sev-catastrophic { color: var(--danger); background: rgba(231,76,60,0.1); }
+.sev-severe  { color: var(--risk-3-light); background: rgba(230,126,34,0.1); }
+.sev-moderate { color: var(--warning); background: rgba(243,156,18,0.1); }
+.sev-minor   { color: var(--success); background: rgba(39,174,96,0.1); }
+.er-deaths   { font-size: 11px; color: var(--danger); font-family: var(--font-mono); }
